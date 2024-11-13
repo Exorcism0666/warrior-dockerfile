@@ -9,6 +9,12 @@ services:
     labels:
       com.centurylinklabs.watchtower.enable: "true"
     restart: unless-stopped
+  dozzle:
+    image: amir20/dozzle:latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 8080:8080
 
   archiveTeamWarrior:
     image: atdr.meo.ws/archiveteam/warrior-dockerfile
