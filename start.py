@@ -20,15 +20,18 @@ except Exception:
     with open(CONFIG_FILE, 'w') as fp:
         json.dump(config, fp)
 
-subprocess.run([
-    "run-warrior3",
-    "--projects-dir",
-    "/home/warrior/projects",
-    "--data-dir",
-    "/home/warrior/data",
-    "--warrior-hq",
-    "https://warriorhq.archiveteam.org",
-    "--port",
-    "8001",
-    "--real-shutdown"
-])
+subprocess.run(
+    [
+        "run-warrior3",
+        "--projects-dir",
+        "/home/warrior/projects",
+        "--data-dir",
+        "/home/warrior/data",
+        "--warrior-hq",
+        "https://warriorhq.archiveteam.org",
+        "--port",
+        "8001",
+        "--real-shutdown"
+    ],
+    stdin=subprocess.DEVNULL
+)

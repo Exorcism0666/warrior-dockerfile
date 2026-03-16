@@ -1,14 +1,16 @@
 FROM atdr.meo.ws/archiveteam/grab-base
 
-LABEL version="20250829.01"
+LABEL version="20260313.01"
 
 RUN apt-get update \
- && apt-get install -y --no-install-recommends nodejs \
+ && apt-get install -y --no-install-recommends tini bash \
  && rm -rf /var/lib/apt/lists/*
 
 RUN useradd -m warrior --uid 1000 \
  && echo "warrior ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
-ENV PATH="/home/warrior/.local/bin:${PATH}"
+COPY entrypoint.sh /entrypoint.sh
+#RUN chmod +x /entrypoint.sh
+#ENV PATH="/home/warrior/.local/bin:${PATH}"
 WORKDIR /home/warrior
 USER 1000
 
@@ -23,5 +25,5 @@ COPY --chown=warrior:warrior start.py .
 EXPOSE 8001
 STOPSIGNAL SIGINT
 
-ENTRYPOINT [ "python", "start.py" ]
+ENTRYPOINT [ "/usr/bin/tini", "--", "python", "start.py" ]
 HEALTHCHECK --interval=5s --timeout=3s CMD /home/warrior/data/wget-at -nv -t1 'http://localhost:8001/index.html' -O /dev/null || exit 1
