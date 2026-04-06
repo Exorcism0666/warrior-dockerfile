@@ -1,9 +1,9 @@
 FROM atdr.meo.ws/archiveteam/grab-base
 
-LABEL version="20260327.01"
+LABEL version="20260405.01"
 
 RUN apt-get update \
- && apt-get install -y --no-install-recommends tini bash \
+ && apt-get install -y --no-install-recommends bash \
  && rm -rf /var/lib/apt/lists/*
 
 COPY --from=atdr.meo.ws/archiveteam/grab-base:nss /usr/local/lib /usr/local/lib
