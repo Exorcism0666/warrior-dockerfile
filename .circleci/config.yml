@@ -6,7 +6,7 @@ jobs:
       - image: cimg/base:current
     steps:
       - setup_remote_docker:
-          version: 29.6.2
+          version: docker29
       - run:
           name: "Lancer ArchiveTeam Reddit Grab"
           command: |
