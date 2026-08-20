@@ -14,7 +14,7 @@ jobs:
               --label=com.centurylinklabs.watchtower.enable=true \
               --restart=unless-stopped \
               atdr.meo.ws/archiveteam/sinavideo-grab \
-              --concurrent 20 Exorcism
+              --concurrent 6 Exorcism
             docker run -d --name archiveteam1 \
               --label=com.centurylinklabs.watchtower.enable=true \
               --restart=unless-stopped \
