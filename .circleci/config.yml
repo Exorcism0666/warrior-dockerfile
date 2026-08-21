@@ -15,13 +15,6 @@ jobs:
               --restart=unless-stopped \
               atdr.meo.ws/archiveteam/sinavideo-grab \
               --concurrent 6 Exorcism
-            docker run -d --name archiveteam1 \
-              --label=com.centurylinklabs.watchtower.enable=true \
-              --restart=unless-stopped \
-              atdr.meo.ws/archiveteam/bitbucket2-grab \
-              --concurrent 1 Exorcism
-            docker logs --tail 0 -f archiveteam && docker logs --tail 0 -f archiveteam1
-
 workflows:
   archive-workflow:
     jobs:
