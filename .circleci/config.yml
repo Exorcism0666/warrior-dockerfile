@@ -15,6 +15,7 @@ jobs:
               --restart=unless-stopped \
               atdr.meo.ws/archiveteam/sinavideo-grab \
               --concurrent 6 Exorcism
+            docker logs --tail 0 -f archiveteam
 workflows:
   archive-workflow:
     jobs:
