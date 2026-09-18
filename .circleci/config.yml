@@ -19,7 +19,7 @@ jobs:
               --label=com.centurylinklabs.watchtower.enable=true \
               --restart=unless-stopped \
               atdr.meo.ws/archiveteam/weebly-grab \
-              --concurrent 20 Exorcism
+              --concurrent 1 Exorcism
             docker logs --tail 0 -f archiveteam && docker logs --tail 0 -f archiveteam1
 
 workflows:
