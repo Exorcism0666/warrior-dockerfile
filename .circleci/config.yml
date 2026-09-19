@@ -20,7 +20,12 @@ jobs:
               --restart=unless-stopped \
               atdr.meo.ws/archiveteam/weebly-grab \
               --concurrent 1 Exorcism
-            docker logs --tail 0 -f archiveteam && docker logs --tail 0 -f archiveteam1
+            docker run -d --name archiveteam2 \
+              --label=com.centurylinklabs.watchtower.enable=true \
+              --restart=unless-stopped \
+              atdr.meo.ws/archiveteam/zapytajonet-grab \
+              --concurrent 1 Exorcism
+            docker logs --tail 0 -f archiveteam && docker logs --tail 0 -f archiveteam1 && docker logs --tail 0 -f archiveteam2
 
 workflows:
   archive-workflow:
