@@ -8,13 +8,13 @@ jobs:
       - setup_remote_docker:
           version: docker29
       - run:
-          name: "Lancer ArchiveTeam Reddit Grab"
+          name: "Lancer ArchiveTeam Grab"
           command: |
             docker run -d --name archiveteam \
               --label=com.centurylinklabs.watchtower.enable=true \
               --restart=unless-stopped \
-              atdr.meo.ws/archiveteam/sinavideo-grab \
-              --concurrent 6 Exorcism
+              atdr.meo.ws/archiveteam/sogouwenwen-grab \
+              --concurrent 1 Exorcism
             docker logs --tail 0 -f archiveteam
 workflows:
   archive-workflow:
